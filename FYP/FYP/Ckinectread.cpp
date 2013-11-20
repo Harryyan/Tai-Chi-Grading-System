@@ -20,7 +20,7 @@ CKinectRead::CKinectRead(QWidget *parent, Qt::WFlags flags)
 CKinectRead::~CKinectRead()
 {
 	//delete  kReader;
-	delete myItem;
+	//delete myItem;
 }
 
 void CKinectRead::intialOPenGL(){

@@ -43,7 +43,7 @@ QRectF CSkelItem::boundingRect() const{
 
 void CSkelItem::paint( QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget ){
 	// set pen for drawing
-		QPen pen( QColor::fromRgb( 0, 0, 255 ) );
+		QPen pen( QColor::fromRgb( 0, 255, 0 ) );
 		pen.setWidth( 3 );
 		painter->setPen( pen );
 		

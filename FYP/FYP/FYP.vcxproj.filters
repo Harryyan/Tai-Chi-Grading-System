@@ -102,8 +102,11 @@
     <ClInclude Include="CSkelItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="FYP.rc" />
+    <None Include="FYP.ico" />
   </ItemGroup>
 </Project>
