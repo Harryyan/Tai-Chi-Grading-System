@@ -85,6 +85,9 @@
     <CustomBuild Include="CGLWidget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="CSkelItem.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_ckinectread.h">
@@ -97,9 +100,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CMyItem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CSkelItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">

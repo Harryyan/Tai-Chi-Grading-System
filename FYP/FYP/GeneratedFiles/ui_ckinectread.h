@@ -107,6 +107,8 @@ public:
         menuStart->addSeparator();
 
         retranslateUi(CKinectReadClass);
+        QObject::connect(start, SIGNAL(clicked()), CKinectReadClass, SLOT(startRecord()));
+        QObject::connect(stop, SIGNAL(clicked()), CKinectReadClass, SLOT(stopRecord()));
 
         QMetaObject::connectSlotsByName(CKinectReadClass);
     } // setupUi

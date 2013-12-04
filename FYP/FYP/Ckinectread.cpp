@@ -1,14 +1,8 @@
-#include "ckinectread.h"
-#include "COpenNI.h"
-
 #include <stdlib.h>
 #include <iostream>
 
-// Qt Header
 #include "ckinectread.h"
-
-#include "CKinectReader.h"
-
+bool isRecord = false;
 
 CKinectRead::CKinectRead(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -16,11 +10,18 @@ CKinectRead::CKinectRead(QWidget *parent, Qt::WFlags flags)
 	ui.setupUi(this);
 }
 
-
 CKinectRead::~CKinectRead()
 {
-	//delete  kReader;
+	delete  kReader;
 	//delete myItem;
+}
+
+void CKinectRead::startRecord(){
+	isRecord = true;
+}
+
+void CKinectRead::stopRecord(){
+	isRecord = false;
 }
 
 void CKinectRead::intialOPenGL(){

@@ -7,6 +7,15 @@
 #include <QtGui/QGraphicsScene>
 #include <QtGui/QGraphicsPixmapItem>
 
+#include <QtSql> 
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlRecord>
+#include <QSqlField>
+
+
+extern bool isRecord;
+
 /* Class for draw skeleton */
 class CSkelItem : public QGraphicsItem
 {
@@ -72,7 +81,7 @@ public:
 		}
 	}
 
-	void UpdateSkeleton();
+	void UpdateSkeleton(int,int);
 
 private:
 	QRectF boundingRect() const;
@@ -81,9 +90,14 @@ private:
 
 	XnPoint3D GetSkeletonPos( XnSkeletonJoint eJointName );
 
+	void startRecordToDatabase(XnPoint3D *, int, int);
+
 public:
 	COpenNI&	m_OpenNI;
 	XnUserID	m_UserID;
 	XnPoint3D	m_aJoints[15];  //Fifteen skeleton points in OpenNI
 	int			m_aConnection[15][2];  //Store the joint connection in a table
+	int			fid;
+	int         fre;
+	//以下执行相关QSL语句 
 };

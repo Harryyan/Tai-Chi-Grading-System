@@ -1,4 +1,6 @@
 #include "CKinectReader.h"
+int frameID = 0;
+int frame = 1;
 
 CKinectReader::~CKinectReader(){
 	m_Scene.removeItem( m_pItemImage );
@@ -20,7 +22,6 @@ bool CKinectReader::Start(int iInterval){
 	// update first to get the depth map size
 	m_OpenNI.UpdateData();
 	m_pDepthARGB = new uchar[4*m_OpenNI.m_DepthMD.XRes()*m_OpenNI.m_DepthMD.YRes()];
-
 	startTimer( iInterval );
 	return true;
 }
@@ -89,6 +90,7 @@ void CKinectReader::timerEvent(QTimerEvent *event){
 				if( rSC.IsTracking( aUserID[i] ) )
 				{
 					++counter;
+
 					if( counter > m_vSkeleton.size() )
 					{
 						// create new skeleton item
@@ -101,8 +103,10 @@ void CKinectReader::timerEvent(QTimerEvent *event){
 						m_vSkeleton[ counter-1 ]->m_UserID = aUserID[i];
 
 					// update skeleton item data
-					m_vSkeleton[ counter-1 ]->UpdateSkeleton();
+					m_vSkeleton[ counter-1 ]->UpdateSkeleton(frameID,frame);
 					m_vSkeleton[ counter-1 ]->setVisible( true );
+					frame++;
+					frameID = frameID + 16;
 				}
 			}
 			// hide un-used skeleton items

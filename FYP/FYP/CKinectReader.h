@@ -10,7 +10,6 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
-
 #include "COpenNI.h"
 
 
@@ -42,6 +41,7 @@ private:
 	QGraphicsPixmapItem*	m_pItemImage;
 	uchar*					m_pDepthARGB;
 	vector<CSkelItem*>		m_vSkeleton;
+	//int                     countFrame;
 
 private:
 	void timerEvent( QTimerEvent *event );

@@ -36,6 +36,10 @@ private:
 	CKinectReader *kReader;
 	CMyItem *myItem;
 	QGraphicsScene  qScene;
+
+private slots:
+    void startRecord(void);
+	void stopRecord(void);
 };
 
 #endif // CKINECTREAD_H
