@@ -40,6 +40,8 @@ private:
 private slots:
     void startRecord(void);
 	void stopRecord(void);
+	void insert(void);
+	void showGrade(void);
 };
 
 #endif // CKINECTREAD_H

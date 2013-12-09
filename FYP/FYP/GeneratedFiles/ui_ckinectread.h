@@ -30,8 +30,8 @@ QT_BEGIN_NAMESPACE
 class Ui_CKinectReadClass
 {
 public:
-    QAction *actionRecord;
-    QAction *actionStop;
+    QAction *grade;
+    QAction *exit;
     QWidget *centralWidget;
     QGraphicsView *userView;
     QLabel *Grade;
@@ -40,6 +40,7 @@ public:
     QScrollArea *Advices;
     QWidget *scrollAreaWidgetContents;
     QGraphicsView *OpenGLView;
+    QPushButton *breakpoint;
     QMenuBar *menuBar;
     QMenu *menuStart;
     QMenu *menuAbout_us;
@@ -51,40 +52,43 @@ public:
     {
         if (CKinectReadClass->objectName().isEmpty())
             CKinectReadClass->setObjectName(QString::fromUtf8("CKinectReadClass"));
-        CKinectReadClass->resize(885, 627);
-        actionRecord = new QAction(CKinectReadClass);
-        actionRecord->setObjectName(QString::fromUtf8("actionRecord"));
-        actionStop = new QAction(CKinectReadClass);
-        actionStop->setObjectName(QString::fromUtf8("actionStop"));
+        CKinectReadClass->resize(999, 689);
+        grade = new QAction(CKinectReadClass);
+        grade->setObjectName(QString::fromUtf8("grade"));
+        exit = new QAction(CKinectReadClass);
+        exit->setObjectName(QString::fromUtf8("exit"));
         centralWidget = new QWidget(CKinectReadClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         userView = new QGraphicsView(centralWidget);
         userView->setObjectName(QString::fromUtf8("userView"));
-        userView->setGeometry(QRect(340, 0, 531, 411));
+        userView->setGeometry(QRect(340, 0, 651, 481));
         Grade = new QLabel(centralWidget);
         Grade->setObjectName(QString::fromUtf8("Grade"));
-        Grade->setGeometry(QRect(340, 440, 541, 71));
+        Grade->setGeometry(QRect(343, 500, 841, 101));
         stop = new QPushButton(centralWidget);
         stop->setObjectName(QString::fromUtf8("stop"));
-        stop->setGeometry(QRect(20, 520, 75, 23));
+        stop->setGeometry(QRect(3, 610, 75, 23));
         start = new QPushButton(centralWidget);
         start->setObjectName(QString::fromUtf8("start"));
-        start->setGeometry(QRect(160, 520, 75, 23));
+        start->setGeometry(QRect(228, 610, 75, 23));
         Advices = new QScrollArea(centralWidget);
         Advices->setObjectName(QString::fromUtf8("Advices"));
-        Advices->setGeometry(QRect(0, 430, 311, 80));
+        Advices->setGeometry(QRect(2, 500, 331, 80));
         Advices->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 309, 78));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 329, 78));
         Advices->setWidget(scrollAreaWidgetContents);
         OpenGLView = new QGraphicsView(centralWidget);
         OpenGLView->setObjectName(QString::fromUtf8("OpenGLView"));
-        OpenGLView->setGeometry(QRect(0, 0, 300, 400));
+        OpenGLView->setGeometry(QRect(1, -1, 331, 481));
+        breakpoint = new QPushButton(centralWidget);
+        breakpoint->setObjectName(QString::fromUtf8("breakpoint"));
+        breakpoint->setGeometry(QRect(113, 610, 75, 23));
         CKinectReadClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CKinectReadClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 885, 23));
+        menuBar->setGeometry(QRect(0, 0, 999, 23));
         menuStart = new QMenu(menuBar);
         menuStart->setObjectName(QString::fromUtf8("menuStart"));
         menuAbout_us = new QMenu(menuBar);
@@ -102,13 +106,16 @@ public:
         menuBar->addAction(menuStart->menuAction());
         menuBar->addAction(menuAbout_us->menuAction());
         menuBar->addAction(menuHelp->menuAction());
-        menuStart->addAction(actionRecord);
-        menuStart->addAction(actionStop);
+        menuStart->addAction(grade);
+        menuStart->addAction(exit);
         menuStart->addSeparator();
 
         retranslateUi(CKinectReadClass);
         QObject::connect(start, SIGNAL(clicked()), CKinectReadClass, SLOT(startRecord()));
         QObject::connect(stop, SIGNAL(clicked()), CKinectReadClass, SLOT(stopRecord()));
+        QObject::connect(breakpoint, SIGNAL(pressed()), CKinectReadClass, SLOT(insert()));
+        QObject::connect(grade, SIGNAL(triggered()), CKinectReadClass, SLOT(showGrade()));
+        QObject::connect(exit, SIGNAL(triggered()), CKinectReadClass, SLOT(close()));
 
         QMetaObject::connectSlotsByName(CKinectReadClass);
     } // setupUi
@@ -116,12 +123,13 @@ public:
     void retranslateUi(QMainWindow *CKinectReadClass)
     {
         CKinectReadClass->setWindowTitle(QApplication::translate("CKinectReadClass", "CKinectRead", 0, QApplication::UnicodeUTF8));
-        actionRecord->setText(QApplication::translate("CKinectReadClass", "Record", 0, QApplication::UnicodeUTF8));
-        actionStop->setText(QApplication::translate("CKinectReadClass", "Stop", 0, QApplication::UnicodeUTF8));
+        grade->setText(QApplication::translate("CKinectReadClass", "Show Grade", 0, QApplication::UnicodeUTF8));
+        exit->setText(QApplication::translate("CKinectReadClass", "Exit", 0, QApplication::UnicodeUTF8));
         Grade->setText(QApplication::translate("CKinectReadClass", "Display the users' grade", 0, QApplication::UnicodeUTF8));
         stop->setText(QApplication::translate("CKinectReadClass", "Stop", 0, QApplication::UnicodeUTF8));
         start->setText(QApplication::translate("CKinectReadClass", "Start", 0, QApplication::UnicodeUTF8));
-        menuStart->setTitle(QApplication::translate("CKinectReadClass", "Start", 0, QApplication::UnicodeUTF8));
+        breakpoint->setText(QApplication::translate("CKinectReadClass", "Insert", 0, QApplication::UnicodeUTF8));
+        menuStart->setTitle(QApplication::translate("CKinectReadClass", "Grading", 0, QApplication::UnicodeUTF8));
         menuAbout_us->setTitle(QApplication::translate("CKinectReadClass", "About us", 0, QApplication::UnicodeUTF8));
         menuHelp->setTitle(QApplication::translate("CKinectReadClass", "Help", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

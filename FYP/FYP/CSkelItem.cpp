@@ -9,13 +9,13 @@ void CSkelItem::UpdateSkeleton(int count,int frame){
 		XnPoint3D	JointsReal[15];
 		JointsReal[ 0] = GetSkeletonPos( XN_SKEL_HEAD			);
 		JointsReal[ 1] = GetSkeletonPos( XN_SKEL_NECK			);
-		JointsReal[ 2] = GetSkeletonPos( XN_SKEL_LEFT_HAND			);
-		JointsReal[ 3] = GetSkeletonPos( XN_SKEL_LEFT_ELBOW	);
-		JointsReal[ 4] = GetSkeletonPos( XN_SKEL_LEFT_SHOULDER 	);
-		JointsReal[ 5] = GetSkeletonPos( XN_SKEL_RIGHT_HAND		);
-		JointsReal[ 6] = GetSkeletonPos( XN_SKEL_RIGHT_ELBOW	);
-		JointsReal[ 7] = GetSkeletonPos( XN_SKEL_RIGHT_SHOULDER 	);
-		JointsReal[ 8] = GetSkeletonPos( XN_SKEL_TORSO		);
+		JointsReal[ 2] = GetSkeletonPos( XN_SKEL_TORSO			);
+		JointsReal[ 3] = GetSkeletonPos( XN_SKEL_LEFT_SHOULDER	);
+		JointsReal[ 4] = GetSkeletonPos( XN_SKEL_LEFT_ELBOW		);
+		JointsReal[ 5] = GetSkeletonPos( XN_SKEL_LEFT_HAND		);
+		JointsReal[ 6] = GetSkeletonPos( XN_SKEL_RIGHT_SHOULDER	);
+		JointsReal[ 7] = GetSkeletonPos( XN_SKEL_RIGHT_ELBOW	);
+		JointsReal[ 8] = GetSkeletonPos( XN_SKEL_RIGHT_HAND		);
 		JointsReal[ 9] = GetSkeletonPos( XN_SKEL_LEFT_HIP		);
 		JointsReal[10] = GetSkeletonPos( XN_SKEL_LEFT_KNEE		);
 		JointsReal[11] = GetSkeletonPos( XN_SKEL_LEFT_FOOT		);
@@ -24,18 +24,40 @@ void CSkelItem::UpdateSkeleton(int count,int frame){
 		JointsReal[14] = GetSkeletonPos( XN_SKEL_RIGHT_FOOT		);
 
 		if(isRecord){
-			
-			dbconn.setDatabaseName("RecordSet.db");  //find database file 
 
-			dbconn.open();
+			switch(databaseCount){
+				case 0:
+					dbconn.setDatabaseName("test.db");  //first database for initial action
+					dbconn.open();
+					dbconn.transaction();
+					startRecordToDatabase(JointsReal, fid, fre);
+					dbconn.commit();
+					dbconn.close();
+					break;
 
-			dbconn.transaction();
 
-			startRecordToDatabase(JointsReal, fid, fre);
+				case 1:
+					dbconn.setDatabaseName("test1.db");  //first database for initial action
+					dbconn.open();
+					dbconn.transaction();
+					startRecordToDatabase(JointsReal, fid, fre);
+					dbconn.commit();
+					dbconn.close();
+					break;
 
-			dbconn.commit();
 
-			dbconn.close();
+				case 2:
+					dbconn.setDatabaseName("test2.db");  //first database for initial action
+					dbconn.open();
+					dbconn.transaction();
+					startRecordToDatabase(JointsReal, fid, fre);
+					dbconn.commit();
+					dbconn.close();
+					break;
+
+				default: break;
+
+			}
 		}
 		
 		// convert form real world to projective
@@ -46,7 +68,7 @@ void CSkelItem::UpdateSkeleton(int count,int frame){
 void CSkelItem::startRecordToDatabase(XnPoint3D *JointsReal, int nRow, int countFrame){
 
 	QSqlQuery   query;
-	
+
 	query.prepare("INSERT INTO tab1 (MID, Frame,Position, X,Y,Z) " 
                   "VALUES (:MID, :Frame, :Position, :X, :Y, :Z)"); 
     query.bindValue(":MID",nRow); 
@@ -74,39 +96,6 @@ void CSkelItem::startRecordToDatabase(XnPoint3D *JointsReal, int nRow, int count
     query.bindValue(":MID",nRow); 
     query.bindValue(":Frame",countFrame);
 	query.bindValue(":Position","lefthand");
-	query.bindValue(":X",JointsReal[2].X);
-	query.bindValue(":Y",JointsReal[2].Y);
-	query.bindValue(":Z",JointsReal[2].Z);
-	nRow++;
-	query.exec();
-
-	query.prepare("INSERT INTO tab1 (MID, Frame,Position, X,Y,Z) " 
-                  "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
-    query.bindValue(":MID",nRow); 
-    query.bindValue(":Frame",countFrame);
-	query.bindValue(":Position","leftelbow");
-	query.bindValue(":X",JointsReal[3].X);
-	query.bindValue(":Y",JointsReal[3].Y);
-	query.bindValue(":Z",JointsReal[3].Z);
-	nRow++;
-	query.exec();
-
-	query.prepare("INSERT INTO tab1 (MID, Frame,Position, X,Y,Z) " 
-                  "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
-    query.bindValue(":MID",nRow); 
-    query.bindValue(":Frame",countFrame);
-	query.bindValue(":Position","leftshoulder");
-	query.bindValue(":X",JointsReal[4].X);
-	query.bindValue(":Y",JointsReal[4].Y);
-	query.bindValue(":Z",JointsReal[4].Z);
-	nRow++;
-	query.exec();
-
-	query.prepare("INSERT INTO tab1 (MID, Frame,Position, X,Y,Z) " 
-                  "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
-    query.bindValue(":MID",nRow); 
-    query.bindValue(":Frame",countFrame);
-	query.bindValue(":Position","righthand");
 	query.bindValue(":X",JointsReal[5].X);
 	query.bindValue(":Y",JointsReal[5].Y);
 	query.bindValue(":Z",JointsReal[5].Z);
@@ -117,10 +106,10 @@ void CSkelItem::startRecordToDatabase(XnPoint3D *JointsReal, int nRow, int count
                   "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
     query.bindValue(":MID",nRow); 
     query.bindValue(":Frame",countFrame);
-	query.bindValue(":Position","rightelbow");
-	query.bindValue(":X",JointsReal[6].X);
-	query.bindValue(":Y",JointsReal[6].Y);
-	query.bindValue(":Z",JointsReal[6].Z);
+	query.bindValue(":Position","leftelbow");
+	query.bindValue(":X",JointsReal[4].X);
+	query.bindValue(":Y",JointsReal[4].Y);
+	query.bindValue(":Z",JointsReal[4].Z);
 	nRow++;
 	query.exec();
 
@@ -128,7 +117,29 @@ void CSkelItem::startRecordToDatabase(XnPoint3D *JointsReal, int nRow, int count
                   "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
     query.bindValue(":MID",nRow); 
     query.bindValue(":Frame",countFrame);
-	query.bindValue(":Position","rightshoulder");
+	query.bindValue(":Position","leftshoulder");
+	query.bindValue(":X",JointsReal[3].X);
+	query.bindValue(":Y",JointsReal[3].Y);
+	query.bindValue(":Z",JointsReal[3].Z);
+	nRow++;
+	query.exec();
+
+	query.prepare("INSERT INTO tab1 (MID, Frame,Position, X,Y,Z) " 
+                  "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
+    query.bindValue(":MID",nRow); 
+    query.bindValue(":Frame",countFrame);
+	query.bindValue(":Position","righthand");
+	query.bindValue(":X",JointsReal[8].X);
+	query.bindValue(":Y",JointsReal[8].Y);
+	query.bindValue(":Z",JointsReal[8].Z);
+	nRow++;
+	query.exec();
+
+	query.prepare("INSERT INTO tab1 (MID, Frame,Position, X,Y,Z) " 
+                  "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
+    query.bindValue(":MID",nRow); 
+    query.bindValue(":Frame",countFrame);
+	query.bindValue(":Position","rightelbow");
 	query.bindValue(":X",JointsReal[7].X);
 	query.bindValue(":Y",JointsReal[7].Y);
 	query.bindValue(":Z",JointsReal[7].Z);
@@ -139,10 +150,21 @@ void CSkelItem::startRecordToDatabase(XnPoint3D *JointsReal, int nRow, int count
                   "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
     query.bindValue(":MID",nRow); 
     query.bindValue(":Frame",countFrame);
+	query.bindValue(":Position","rightshoulder");
+	query.bindValue(":X",JointsReal[6].X);
+	query.bindValue(":Y",JointsReal[6].Y);
+	query.bindValue(":Z",JointsReal[6].Z);
+	nRow++;
+	query.exec();
+
+	query.prepare("INSERT INTO tab1 (MID, Frame,Position, X,Y,Z) " 
+                  "VALUES (:MID, :Frame, :Position, :X,:Y,:Z)"); 
+    query.bindValue(":MID",nRow); 
+    query.bindValue(":Frame",countFrame);
 	query.bindValue(":Position","torso");
-	query.bindValue(":X",JointsReal[8].X);
-	query.bindValue(":Y",JointsReal[8].Y);
-	query.bindValue(":Z",JointsReal[8].Z);
+	query.bindValue(":X",JointsReal[2].X);
+	query.bindValue(":Y",JointsReal[2].Y);
+	query.bindValue(":Z",JointsReal[2].Z);
 	nRow++;
 	query.exec();
 
@@ -211,7 +233,6 @@ void CSkelItem::startRecordToDatabase(XnPoint3D *JointsReal, int nRow, int count
 	query.bindValue(":Z",JointsReal[14].Z);
 	nRow++;
 	query.exec();
-
 }
 
 QRectF CSkelItem::boundingRect() const{

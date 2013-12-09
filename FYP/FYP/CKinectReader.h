@@ -31,7 +31,7 @@ class CKinectReader: public QObject
 	/* Destructor */
 	~CKinectReader();
 
-	bool Start( int iInterval = 33 );
+	bool Start( int iInterval = 100 );
 
 
 private:

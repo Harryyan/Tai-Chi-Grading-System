@@ -3,10 +3,10 @@
 
 int main(int argc, char *argv[])
 {
-	COpenNI mOpenNI;
+	/*COpenNI mOpenNI;
 	bool bStatus = true;
 	if( !mOpenNI.Initial() )
-		return 1;
+		return 1;*/
 
 	// Qt Application
 	QApplication a(argc, argv);
@@ -26,19 +26,14 @@ int main(int argc, char *argv[])
 	//splash->showMessage(QObject::tr("hahaha.正在启动中...."),
    // Qt::AlignLeft|Qt::AlignBottom,Qt::green);
 
-	/*
-	QSqlDatabase dbconn=QSqlDatabase::addDatabase("QSQLITE");    //add database driver
-	dbconn.setDatabaseName("RecordData.db");  //find database file           
-	dbconn.open();
-	*/
-	QGraphicsScene  qScene;
+
+	//QGraphicsScene  qScene;
 
 	CKinectRead readKinect;
 	readKinect.show();
-	readKinect.initial(mOpenNI,qScene); //User Skeleton
+	//readKinect.initial(mOpenNI,qScene); //User Skeleton
 	//readKinect.intialOPenGL(); // Draw the track of one skeleton point
 	//splash->finish(&readKinect);  
     //delete splash;  
-	//dbconn.close();
 	return a.exec();
 }

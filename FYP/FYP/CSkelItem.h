@@ -13,8 +13,8 @@
 #include <QSqlRecord>
 #include <QSqlField>
 
-
 extern bool isRecord;
+extern int databaseCount;
 
 /* Class for draw skeleton */
 class CSkelItem : public QGraphicsItem

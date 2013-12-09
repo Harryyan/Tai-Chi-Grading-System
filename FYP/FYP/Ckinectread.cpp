@@ -3,6 +3,7 @@
 
 #include "ckinectread.h"
 bool isRecord = false;
+int databaseCount = 0;
 
 CKinectRead::CKinectRead(QWidget *parent, Qt::WFlags flags)
 	: QMainWindow(parent, flags)
@@ -12,7 +13,7 @@ CKinectRead::CKinectRead(QWidget *parent, Qt::WFlags flags)
 
 CKinectRead::~CKinectRead()
 {
-	delete  kReader;
+	//delete  kReader;
 	//delete myItem;
 }
 
@@ -22,6 +23,32 @@ void CKinectRead::startRecord(){
 
 void CKinectRead::stopRecord(){
 	isRecord = false;
+}
+
+void CKinectRead::showGrade(){
+	qScene.addText("showgrade");
+	ui.OpenGLView->setScene(&qScene);
+}
+
+void CKinectRead::insert(){
+	
+	databaseCount++;
+	
+	qScene.clear();
+
+	if(databaseCount == 1){
+		qScene.addText("1");
+	}
+	else if(databaseCount == 2){
+		qScene.addText("2");
+	}
+	else{
+		qScene.addText("more");
+	}
+
+	qScene.addText((QString) databaseCount);
+	
+	ui.OpenGLView->setScene(&qScene);
 }
 
 void CKinectRead::intialOPenGL(){
