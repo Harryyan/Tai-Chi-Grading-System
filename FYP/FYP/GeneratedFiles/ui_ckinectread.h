@@ -16,11 +16,11 @@
 #include <QtGui/QGraphicsView>
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
+#include <QtGui/QListView>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QPushButton>
-#include <QtGui/QScrollArea>
 #include <QtGui/QStatusBar>
 #include <QtGui/QToolBar>
 #include <QtGui/QWidget>
@@ -37,10 +37,9 @@ public:
     QLabel *Grade;
     QPushButton *stop;
     QPushButton *start;
-    QScrollArea *Advices;
-    QWidget *scrollAreaWidgetContents;
     QGraphicsView *OpenGLView;
     QPushButton *breakpoint;
+    QListView *GradeView;
     QMenuBar *menuBar;
     QMenu *menuStart;
     QMenu *menuAbout_us;
@@ -52,7 +51,7 @@ public:
     {
         if (CKinectReadClass->objectName().isEmpty())
             CKinectReadClass->setObjectName(QString::fromUtf8("CKinectReadClass"));
-        CKinectReadClass->resize(999, 689);
+        CKinectReadClass->resize(1126, 716);
         grade = new QAction(CKinectReadClass);
         grade->setObjectName(QString::fromUtf8("grade"));
         exit = new QAction(CKinectReadClass);
@@ -61,34 +60,29 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         userView = new QGraphicsView(centralWidget);
         userView->setObjectName(QString::fromUtf8("userView"));
-        userView->setGeometry(QRect(340, 0, 651, 481));
+        userView->setGeometry(QRect(410, 0, 651, 481));
         Grade = new QLabel(centralWidget);
         Grade->setObjectName(QString::fromUtf8("Grade"));
-        Grade->setGeometry(QRect(343, 500, 841, 101));
+        Grade->setGeometry(QRect(369, 500, 841, 101));
         stop = new QPushButton(centralWidget);
         stop->setObjectName(QString::fromUtf8("stop"));
-        stop->setGeometry(QRect(3, 610, 75, 23));
+        stop->setGeometry(QRect(10, 610, 75, 23));
         start = new QPushButton(centralWidget);
         start->setObjectName(QString::fromUtf8("start"));
-        start->setGeometry(QRect(228, 610, 75, 23));
-        Advices = new QScrollArea(centralWidget);
-        Advices->setObjectName(QString::fromUtf8("Advices"));
-        Advices->setGeometry(QRect(2, 500, 331, 80));
-        Advices->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 329, 78));
-        Advices->setWidget(scrollAreaWidgetContents);
+        start->setGeometry(QRect(234, 610, 75, 23));
         OpenGLView = new QGraphicsView(centralWidget);
         OpenGLView->setObjectName(QString::fromUtf8("OpenGLView"));
-        OpenGLView->setGeometry(QRect(1, -1, 331, 481));
+        OpenGLView->setGeometry(QRect(10, 0, 331, 481));
         breakpoint = new QPushButton(centralWidget);
         breakpoint->setObjectName(QString::fromUtf8("breakpoint"));
-        breakpoint->setGeometry(QRect(113, 610, 75, 23));
+        breakpoint->setGeometry(QRect(125, 610, 70, 23));
+        GradeView = new QListView(centralWidget);
+        GradeView->setObjectName(QString::fromUtf8("GradeView"));
+        GradeView->setGeometry(QRect(10, 490, 330, 111));
         CKinectReadClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CKinectReadClass);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 999, 23));
+        menuBar->setGeometry(QRect(0, 0, 1126, 21));
         menuStart = new QMenu(menuBar);
         menuStart->setObjectName(QString::fromUtf8("menuStart"));
         menuAbout_us = new QMenu(menuBar);

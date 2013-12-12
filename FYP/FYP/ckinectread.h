@@ -36,12 +36,15 @@ private:
 	CKinectReader *kReader;
 	CMyItem *myItem;
 	QGraphicsScene  qScene;
+	GradingRules grading;
+	QStandardItemModel *standardItemModel; 
 
 private slots:
     void startRecord(void);
 	void stopRecord(void);
 	void insert(void);
 	void showGrade(void);
+	void itemClicked(QModelIndex index);  
 };
 
 #endif // CKINECTREAD_H

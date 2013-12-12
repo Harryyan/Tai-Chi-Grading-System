@@ -71,7 +71,7 @@
     <ClCompile Include="CSkelItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GradeActions.cpp">
+    <ClCompile Include="GradingRules.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,7 +108,7 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GradeActions.h">
+    <ClInclude Include="GradingRules.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

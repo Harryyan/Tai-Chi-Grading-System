@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>999</width>
-    <height>689</height>
+    <width>1126</width>
+    <height>716</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QGraphicsView" name="userView">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>410</x>
       <y>0</y>
       <width>651</width>
       <height>481</height>
@@ -27,7 +27,7 @@
    <widget class="QLabel" name="Grade">
     <property name="geometry">
      <rect>
-      <x>343</x>
+      <x>369</x>
       <y>500</y>
       <width>841</width>
       <height>101</height>
@@ -40,7 +40,7 @@
    <widget class="QPushButton" name="stop">
     <property name="geometry">
      <rect>
-      <x>3</x>
+      <x>10</x>
       <y>610</y>
       <width>75</width>
       <height>23</height>
@@ -53,7 +53,7 @@
    <widget class="QPushButton" name="start">
     <property name="geometry">
      <rect>
-      <x>228</x>
+      <x>234</x>
       <y>610</y>
       <width>75</width>
       <height>23</height>
@@ -63,34 +63,11 @@
      <string>Start</string>
     </property>
    </widget>
-   <widget class="QScrollArea" name="Advices">
-    <property name="geometry">
-     <rect>
-      <x>2</x>
-      <y>500</y>
-      <width>331</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>329</width>
-       <height>78</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QGraphicsView" name="OpenGLView">
     <property name="geometry">
      <rect>
-      <x>1</x>
-      <y>-1</y>
+      <x>10</x>
+      <y>0</y>
       <width>331</width>
       <height>481</height>
      </rect>
@@ -99,14 +76,24 @@
    <widget class="QPushButton" name="breakpoint">
     <property name="geometry">
      <rect>
-      <x>113</x>
+      <x>125</x>
       <y>610</y>
-      <width>75</width>
+      <width>70</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Insert</string>
+    </property>
+   </widget>
+   <widget class="QListView" name="GradeView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>490</y>
+      <width>330</width>
+      <height>111</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -115,8 +102,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>999</width>
-     <height>23</height>
+     <width>1126</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuStart">

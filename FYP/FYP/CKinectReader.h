@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <vector>
-#include "CSkelItem.h"
+#include "GradingRules.h"
 
 // Qt Header
 #include <QApplication>

@@ -104,7 +104,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_ckinectread.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GradeActions.cpp" />
+    <ClCompile Include="GradingRules.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CGLWidget.cpp" />
   </ItemGroup>
@@ -154,7 +154,7 @@
       </Command>
     </CustomBuild>
     <ClInclude Include="GeneratedFiles\ui_ckinectread.h" />
-    <ClInclude Include="GradeActions.h" />
+    <ClInclude Include="GradingRules.h" />
     <ClInclude Include="resource.h" />
     <CustomBuild Include="CGLWidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
